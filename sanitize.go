@@ -82,7 +82,7 @@ func HTMLAllowing(s string, args ...[]string) (string, error) {
 		case parser.TextToken:
 			// We allow text content through, unless ignoring this entire tag and its contents (including other tags)
 			if ignore == "" {
-				buffer.WriteString(token.String())
+				buffer.WriteString(template.HTMLEscapeString(token.String()))
 			}
 		case parser.CommentToken:
 			// We ignore comments by default
